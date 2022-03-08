@@ -1,0 +1,221 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+.ml10 {
+  margin-left: 10px;
+}
+
+.mt27 {
+  margin-top: 27px;
+}
+
+
+
+.btm-shadow {
+  box-shadow: 0px 1px 3px #ccc;
+}
+
+#page-wrapper {
+  padding: 0 5px;
+  min-height: 568px;
+  background-color: #f1f1f1;
+  margin-top: 43px;
+}
+
+.main {
+  padding: 0 10px;
+}
+
+.heading1 {
+  border-bottom: 1px solid #cdcdcd;
+  padding-bottom: 7px;
+}
+
+.input-group .ig-label {
+  background: #edf7f9;
+  padding: 11px 12px;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+  min-width: 151px;
+  text-align: left;
+}
+
+.input-group .ig-input {
+  height: 38px;
+}
+
+/* Custome Radio Button CSS Start*/
+
+.custome_radio {
+  margin: 0;
+}
+
+.custome_radio:checked,
+.custome_radio:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.custome_radio:checked + label,
+.custome_radio:not(:checked) + label {
+  position: relative;
+  padding-left: 22px;
+  padding-right: 10px;
+  padding-top: 0px;
+  cursor: pointer;
+  line-height: 20px;
+  letter-spacing: 0.03rem;
+  font-weight: bold;
+  color: #202020;
+  display: inline;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+.custome_radio:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: -2px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #757575;
+  border-radius: 100%;
+  background: transparent;
+}
+
+.custome_radio:checked + label:before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: -2px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #00aeef;
+  border-radius: 100%;
+  background: #fff;
+}
+
+.custome_radio:checked + label:after,
+.custome_radio:not(:checked) + label:after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #00aeef;
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  border-radius: 100%;
+}
+
+.custome_radio:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+.custome_radio:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.custome_radio + label:after,
+.custome_radio + label:before {
+  box-sizing: unset;
+}
+
+.active_custome_radio {
+  background: #3a587a;
+}
+/* Custome Radio Button CSS End*/
+
+#busexistinggpsdata table thead {
+  background-color: #005574;
+  color: #fff;
+  font-size: 12px;
+}
+
+#busexistinggpsdata table thead th {
+  text-align: center;
+  border-bottom: 0;
+}
+
+#busexistinggpsdata table thead tr th {
+  border-left: solid 1px #014864;
+  border-right: solid 1px #014864;
+}
+
+#busexistinggpsdata table tbody tr td {
+  border-left: solid 1px #d9d9d9;
+  border-right: solid 1px #d9d9d9;
+}
+
+#busexistinggpsdata table tbody tr td:nth-child(1) {
+  text-align: center;
+}
+
+#busexistinggpsdata table tbody tr td:nth-child(3) {
+  text-align: center;
+}
+
+#busexistinggpsdata table tbody tr td:nth-child(5) {
+  text-align: center;
+}
+
+#busexistinggpsdata table {
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+.btn:active:focus,
+.btn:focus {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-orange {
+  color: #fff;
+  background-color: #ff6000;
+  border-color: #ff6000;
+  padding: 7px;
+  min-width: 80px;
+}
+
+.btn-orange:active,
+.btn-orange:focus,
+.btn-orange:hover {
+  background: #e25500;
+  color: #fff;
+}
+
+.btn-outline-orange {
+  color: #ff6000;
+  background-color: transparent;
+  background-image: none;
+  border-color: #ff6000;
+  padding: 7px;
+  min-width: 80px;
+}
+
+.btn-outline-orange:active,
+.btn-outline-orange:focus,
+.btn-outline-orange:hover {
+  color: #fff;
+  background-color: #ff6000;
+  border-color: #ff6000;
+}
+
+
+.form-group {
+  margin-bottom: 5px;
+}

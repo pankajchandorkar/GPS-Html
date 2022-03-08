@@ -1,0 +1,249 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  color: #333;
+  background-color: #F1F1F1;
+  line-height: 1;
+}
+
+#wrapper {
+  width: 100%;
+}
+
+.navbar {
+  min-height: 33px;
+}
+
+.navbar-fixed-top {
+  background: #005575;
+}
+
+.navbar-header {
+  float: left !important;
+}
+.navbar-fixed-top ul.navbar-right {
+  float: right !important;
+}
+.navbar-brand {
+  padding: 0 6px;
+  height: 33px;
+}
+
+.navbar-default .navbar-brand {
+  color: #ddd;
+}
+
+/* Top Right Navigation Dropdown Styles */
+
+.navbar-top-links li {
+  display: inline-block;
+}
+
+.navbar-top-links li:last-child {
+  margin-right: 15px;
+}
+
+.navbar-top-links li a {
+  padding: 15px;
+  min-height: 40px;
+}
+
+.navbar-top-links .dropdown-menu li {
+  display: block;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+  margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+  padding: 3px 20px;
+  min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+  white-space: normal;
+}
+
+.navbar-top-links .dropdown-messages,
+.navbar-top-links .dropdown-tasks,
+.navbar-top-links .dropdown-alerts {
+  width: 310px;
+  min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+  margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-tasks {
+  margin-left: -59px;
+}
+
+.navbar-top-links .dropdown-alerts {
+  margin-left: -123px;
+}
+
+.navbar-top-links .dropdown-user {
+  right: 0;
+  left: auto;
+}
+
+.nav > li > a {
+  color: #7bbdf6;
+}
+
+.navbar-top-links li a.dropdown-toggle,
+.bkg-menu-master {
+  padding: 9px !important;
+  min-height: 33px !important;
+}
+
+.nav > li > a:hover {
+  color: #444;
+}
+
+.bkg-li-head {
+  padding: 10px;
+  display: block;
+  border-bottom: 1px dashed #d8d8d8;
+  font-size: 17px;
+  color: #999;
+}
+
+.bkg-li-val {
+  padding: 15px 10px;
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle:focus {
+  outline: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
+}
+
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.428571429;
+  color: #333;
+  white-space: nowrap;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  background-color: #428bca;
+}
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  color: #999;
+}
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  cursor: not-allowed;
+}
+.open > .dropdown-menu {
+  display: block;
+}
+.open > a {
+  outline: 0;
+}
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+.dropdown-menu-left {
+  left: 0;
+  right: auto;
+}
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  color: #999;
+}
+.dropdown-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 990;
+}
+.pull-right > .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.dropup .caret,
+.navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px solid;
+  content: "";
+}
+.dropup .dropdown-menu,
+.navbar-fixed-bottom .dropdown .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 1px;
+}
+
+.bkg-ul-wide {
+  min-width: 300px;
+}
+
+@media (min-width: 768px) {
+  .navbar-left {
+    float: left !important;
+  }
+  .navbar-right {
+    float: right !important;
+    margin-right: 0px;
+  }
+}

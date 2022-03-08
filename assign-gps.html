@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assign GPS</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./css/font-awesome.css" />
+    <link rel="stylesheet" href="./chosen/chosen.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <header id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
+                <a class="navbar-brand">
+                    <img src="./images/mantis-logo.jpg" />
+                </a>
+            </div>
+            <!-- /.navbar-header -->
+            <!--<div class="navbar-header" style="color: #fff;padding-top: 10px;font-size: 16px;margin-left: 50px;width: 50%;">
+            <marquee>CRS Server will be under maintenance from 1 AM to 5 AM</marquee>
+        </div>-->
+            <ul class="nav navbar-top-links navbar-right">
+                <li></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-info-sign"></i> Handy Info
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" id="shortCutsInfo"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Shortcut
+                                Keys
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-link"></i> Quick Links
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/master" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Master
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/AgentBooking" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Agent
+                                Booking</a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/Report/PhoneBookingsView" id="phoneBookingsConfirmReport"
+                                style="display: none" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Confirm/Cancel Bookings</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#"
+                        id="HeaderReports">
+                        <i class="glyphicon glyphicon-list-alt"></i> Reports
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li id="BkgUserWCollectionRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#"
+                                onclick="ProcessUserWCollectionReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Userwise
+                                Collection Report
+                            </a>
+                        </li>
+                        <li id="BkgRetrievePNRRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" onclick="ProcessRetrievePNRReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Retrieve
+                                PNR Report
+                            </a>
+                        </li>
+                        <li id="futureOccReport">
+                            <a href="http://buscrs.com/Report/FutureForeCastView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Future
+                                Occupancy Report
+                            </a>
+                        </li>
+                        <li id="groupBoardingReport">
+                            <a href="http://buscrs.com/Report/GroupBoardingView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Group
+                                Boarding Report
+                            </a>
+                        </li>
+                        <li id="ticketHistoryReport">
+                            <a href="http://buscrs.com/Report/TicketHistoryView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Ticket
+                                History
+                            </a>
+                        </li>
+                        <li id="holdTicketHistoryReport">
+                            <a href="http://buscrs.com/Report/HoldBookingsView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Hold
+                                Release
+                            </a>
+                        </li>
+                        <li style="display: none" id="quickViewDashBoard">
+                            <a href="http://buscrs.com/Dashboard/QuickView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                        <li style="display: none" id="ReturnTKTBookingReport">
+                            <a href="http://buscrs.com/Report/ReturnTKTView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-user"></i> User
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user bkg-ul-wide">
+                        <li>
+                            <span class="bkg-li-head"> Branch </span>
+                            <span id="spnBranchName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> User </span>
+                            <span id="spnUserName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> options </span>
+                            <span id="changePassword" class="bkg-li-val" style="cursor: pointer">
+                                Change Password
+                            </span>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="http://buscrs.com/Login/Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="page-wrapper">
+        <div class="main">
+            <div class="row  row-no-gutters">
+                <div class="col-sm-12">
+                    <h4 class="heading1"><strong>Assign GPS</strong></h4>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row  row-no-gutters">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                            <span class="input-group-addon ig-label"><strong>Master Bus Number</strong></span>
+                            <select id="cmbMasterBus" name="cmbMasterBus" class="chosen-select form-control ig-input">
+                                <option value="0">- Select -</option>
+                                <option value="12172">AA-15-AA-9999</option>
+                                <option value="26652">AB-01-CC-5555</option>
+                                <option value="7352">AP-01-AP-1234</option>
+                                <option value="12644">AP-02-H-3652</option>
+                                <option value="7349">AP-09-AX-2526</option>
+                                <option value="10178">AP-09-XX-1234</option>
+                                <option value="1293">ap-10-az-1234</option>
+                                <option value="7384">AP-10-AZ-2009</option>
+                                <option value="7460">AP-21-Q-3076</option>
+                                <option value="12645">AP-21-V-5632</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row  row-no-gutters">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="form-group" style="margin-bottom:15px;">
+                            <input class="custome_radio" type="radio" id="rdExisting" name="Filter" value="1"
+                                checked="checked">
+                            <label for="rdExisting">Select From Existing</label>
+                            <input class="custome_radio" type="radio" id="rdNew" name="Filter" value="0">
+                            <label for="rdNew">Enter New Data</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row row-no-gutters" id="busexistinggpsdata">
+                <div class="col-sm-12">
+                    <div class="col-md-6 table-responsive-md">
+                        <table class="table   btm-shadow">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Bus Number
+                                    </th>
+                                    <th>
+                                        GPS Vendor
+                                    </th>
+                                    <th>
+                                        GPS Vehicle ID
+                                    </th>
+                                    <th>
+                                        Auth Code
+                                    </th>
+                                    <th>
+                                        Select GPS to Assign
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        UP-15-K-2233
+                                    </td>
+                                    <td>
+                                        TrackMyUnit
+                                    </td>
+                                    <td>
+                                        RJ125645658
+                                    </td>
+                                    <td>
+                                        354KLjsmshsjs12354588
+                                    </td>
+                                    <td>
+                                        <input class="custome_radio" type="radio" id="selGpsToAssign-1"
+                                            name="selGpsToAssign" value="1" checked="checked">
+                                        <label for="selGpsToAssign-1">&nbsp;</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        TN-04-AD-1234
+                                    </td>
+                                    <td>
+                                        TrackMyUnit
+                                    </td>
+                                    <td>
+                                        RJ125645658
+                                    </td>
+                                    <td>
+                                        354KLjsmshsjs12354588
+                                    </td>
+                                    <td>
+                                        <input class="custome_radio" type="radio" id="selGpsToAssign-2"
+                                            name="selGpsToAssign" value="2">
+                                        <label for="selGpsToAssign-2">&nbsp;</label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row  row-no-gutters" id="busnewgpsdata" style="display:none;">
+                <div class="row  row-no-gutters">
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group input-group btm-shadow">
+                                <span class="input-group-addon ig-label"><strong>GPS
+                                        Vendor</strong></span>
+                                <select id="GPSVendorEdit" name="GPSVendorEdit"
+                                    class="chosen-select form-control ig-input">
+                                    <option value="0">--Select--</option>
+                                    <option value="1">Mantis</option>
+                                    <option value="2">PunBus</option>
+                                    <option value="3">Kanker</option>
+                                    <option value="4">YourBus</option>
+                                    <option value="5">Locanix</option>
+                                    <option value="7">Arya Omni Talk</option>
+                                    <option value="8">Geo Trackers</option>
+                                    <option value="9">JainAura</option>
+                                    <option value="10">ITS</option>
+                                    <option value="11">Intangles</option>
+                                    <option value="12">Mantis-Arya Omni Talk</option>
+                                    <option value="13">VSS Tracking</option>
+                                    <option value="14">SMTC-STA</option>
+                                    <option value="15">Tracker Vigil</option>
+                                    <option value="16">TrackYourFleet</option>
+                                    <option value="17">Rehan Communications</option>
+                                    <option value="18">Shivam GPS</option>
+                                    <option value="19">Gtrac</option>
+                                    <option value="20">Faveo Track</option>
+                                    <option value="21">Letstrack</option>
+                                    <option value="22">iTriangle(PUSH)</option>
+                                    <option value="23">Logistracker</option>
+                                    <option value="24">FleetFox</option>
+                                    <option value="25">AutoCop</option>
+                                    <option value="26">Goldtrack</option>
+                                    <option value="27">Arya Omni Talk(PUSH)</option>
+                                    <option value="28">TrackMyUnit</option>
+                                    <option value="29">Electrosol</option>
+                                    <option value="30">Rehan Communication V1</option>
+                                    <option value="31">Intangles V1</option>
+                                    <option value="32">Tracknow</option>
+                                    <option value="33">shrimate surveillance</option>
+                                    <option value="34">TrackMyVahan</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row end -->
+                <div class="row  row-no-gutters">
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group input-group btm-shadow">
+                                <span class="input-group-addon ig-label"><strong>GPS Vehicle
+                                        ID</strong></span>
+                                <input class="form-control ig-input" type="text" id="GPSVehicleIDEdit" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row end -->
+                <div class="row  row-no-gutters">
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <div class="form-group input-group btm-shadow">
+                                <span class="input-group-addon ig-label" id="auth" style="font-weight:700;">Access
+                                    Token</span>
+                                <input class="form-control ig-input" type="text" id="GPSAuthCode" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row end -->
+            </div>
+            <!-- row end -->
+
+
+            <div class="row  row-no-gutters" style="margin-top:15px;">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <div class="form-group input-group btm-shadow" style="margin-bottom:15px;">
+                            <span class="input-group-addon ig-label"><strong>Bus Mileage</strong></span>
+                            <input class="form-control ig-input" type="text" id="busMileage" maxlength="5" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row  row-no-gutters">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-orange" id="btnSave"><strong>Save</strong></button>
+                        <button type="button" class="btn btn-outline-orange"
+                            id="btnCancel"><strong>Cancel</strong></button>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row  row-no-gutters mt27">
+                <div class="col-sm-12">
+                    <h4 class="heading1"><strong>Bus Master Type</strong></h4>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row  row-no-gutters">
+                <div class="col-sm-12">
+                    <div class="form-group" style="margin-bottom:15px;">
+                        <!-- radio input 1 -->
+                        <input class="custome_radio" type="radio" id="rdExistingPassenger" name="Filter1" value="1"
+                            checked="checked">
+                        <label for="rdExistingPassenger">Passenger Vehicle Only</label>
+                        <!-- radio input 2 -->
+                        <input class="custome_radio" type="radio" id="rdExistingCargo" name="Filter1" value="0">
+                        <label for="rdExistingCargo"> Cargo Vehicle Only
+                        </label>
+                        <!-- radio input 3 -->
+                        <input class="custome_radio" type="radio" id="rdExistingCargoAndPass" name="Filter1" value="0">
+                        <label for="rdExistingCargoAndPass"> Passenger and Cargo Vehicle
+                        </label>
+                        <!-- radio input 4 -->
+                        <input class="custome_radio" type="radio" id="rdExistingBusHire" name="Filter1" value="0">
+                        <label for="rdExistingBusHire"> Bus Hire Vehicle
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+            <div class="row  row-no-gutters">
+                <div class="col-sm-12">
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-orange" id="btnSaveMaster"><strong>Save</strong></button>
+                        <button type="button" class="btn btn-outline-orange"
+                            id="btnCancelMaster"><strong>Cancel</strong></button>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./chosen/chosen.jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>

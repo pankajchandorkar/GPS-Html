@@ -403,17 +403,28 @@
             <div class="row  row-no-gutters">
                 <div class="col-sm-12">
                     <div class="col-sm-6">
-                        <button type="button" class="btn btn-orange" id="btnSaveMaster"><strong>Save</strong></button>
-                        <button type="button" class="btn btn-outline-orange"
-                            id="btnCancelMaster"><strong>Cancel</strong></button>
+                        <div class="form-group" style="margin-bottom:15px;">
+                            <button type="button" class="btn btn-orange"
+                                id="btnSaveMaster"><strong>Save</strong></button>
+                            <button type="button" class="btn btn-outline-orange"
+                                id="btnCancelMaster"><strong>Cancel</strong></button>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- row end -->
+
+            <div class="progress progress-striped active" id="divProgressBar" style="display:none1">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                    aria-valuemax="100" style="width: 100%">
+                    P r o c e s s i n g . . .P l e a se &nbsp; W a i t
+                </div>
+            </div>
+            
         </div>
     </div>
 
-    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/jquery-2.2.4.min.js"></script>
     <script src="./chosen/chosen.jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <script src="./js/common.js"></script>

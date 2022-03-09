@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPS Monitoring Panel</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./css/font-awesome.css" />
+    <link rel="stylesheet" href="./chosen/chosen.min.css" />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <header id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
+                <a class="navbar-brand">
+                    <img src="./images/mantis-logo.jpg" />
+                </a>
+            </div>
+            <!-- /.navbar-header -->
+            <!--<div class="navbar-header" style="color: #fff;padding-top: 10px;font-size: 16px;margin-left: 50px;width: 50%;">
+            <marquee>CRS Server will be under maintenance from 1 AM to 5 AM</marquee>
+        </div>-->
+            <ul class="nav navbar-top-links navbar-right">
+                <li></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-info-sign"></i> Handy Info
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" id="shortCutsInfo"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Shortcut
+                                Keys
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-link"></i> Quick Links
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/master" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Master
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/AgentBooking" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Agent
+                                Booking</a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/Report/PhoneBookingsView" id="phoneBookingsConfirmReport"
+                                style="display: none" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Confirm/Cancel Bookings</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#"
+                        id="HeaderReports">
+                        <i class="glyphicon glyphicon-list-alt"></i> Reports
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li id="BkgUserWCollectionRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#"
+                                onclick="ProcessUserWCollectionReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Userwise
+                                Collection Report
+                            </a>
+                        </li>
+                        <li id="BkgRetrievePNRRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" onclick="ProcessRetrievePNRReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Retrieve
+                                PNR Report
+                            </a>
+                        </li>
+                        <li id="futureOccReport">
+                            <a href="http://buscrs.com/Report/FutureForeCastView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Future
+                                Occupancy Report
+                            </a>
+                        </li>
+                        <li id="groupBoardingReport">
+                            <a href="http://buscrs.com/Report/GroupBoardingView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Group
+                                Boarding Report
+                            </a>
+                        </li>
+                        <li id="ticketHistoryReport">
+                            <a href="http://buscrs.com/Report/TicketHistoryView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Ticket
+                                History
+                            </a>
+                        </li>
+                        <li id="holdTicketHistoryReport">
+                            <a href="http://buscrs.com/Report/HoldBookingsView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Hold
+                                Release
+                            </a>
+                        </li>
+                        <li style="display: none" id="quickViewDashBoard">
+                            <a href="http://buscrs.com/Dashboard/QuickView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                        <li style="display: none" id="ReturnTKTBookingReport">
+                            <a href="http://buscrs.com/Report/ReturnTKTView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-user"></i> User
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user bkg-ul-wide">
+                        <li>
+                            <span class="bkg-li-head"> Branch </span>
+                            <span id="spnBranchName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> User </span>
+                            <span id="spnUserName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> options </span>
+                            <span id="changePassword" class="bkg-li-val" style="cursor: pointer">
+                                Change Password
+                            </span>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="http://buscrs.com/Login/Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="page-wrapper" style="margin-top:34px;padding:0px;min-height:200px;">
+        <div class="main" style="padding:0;">
+            <div class="gps-monitoring-search" style="background: #ffffff;padding:1px 10px;">
+                <div class="row  row-no-gutters">
+                    <div class="col-md-12">
+                        <h4><strong>GPS Monitoring Panel</strong></h4>
+                    </div>
+                </div>
+                <!-- row end -->
+                <div class="row row-no-gutters">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4" id="regionDiv">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Region</strong></span>
+                                <select id="selectRegion" name="selectRegion"
+                                    class="chosen-select form-control ig-input">
+                                    <option value="0">---All Region---</option>
+                                    <option value="1">Gujarat</option>
+                                    <option value="2">Madhya Pradesh</option>
+                                    <option value="3">North Maharashtra</option>
+                                    <option value="4">Central Maharashtra</option>
+                                    <option value="5">Mumbai</option>
+                                    <option value="6">Rajasthan</option>
+                                    <option value="7">South</option>
+                                    <option value="8">Delhi</option>
+                                    <option value="9">South MH &amp; Goa</option>
+                                    <option value="10">North</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" id="operatorDiv">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Operator</strong></span>
+                                <select id="selectOperator" name="selectOperator"
+                                    class="chosen-select form-control ig-input">
+                                    <option value="0">---Select Operator---</option>
+                                    <option value="68">Bhagyalaxmi Travels</option>
+                                    <option value="96">Sana Travels</option>
+                                    <option value="101">Krsna Travels</option>
+                                    <option value="102">Sharma Travels (Nanded)</option>
+                                    <option value="119">Satnam Travels.</option>
+                                    <option value="127">Global Travels</option>
+                                    <option value="131">Ganga Travels Pune</option>
+                                    <option value="157">Rahul Travels</option>
+                                    <option value="227">Humsafar Travels (Jalgaon)</option>
+                                    <option value="234">Noor Travels</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" id="vendorDiv">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Vendor</strong></span>
+                                <select id="selectVendor" name="selectVendor"
+                                    class="chosen-select form-control ig-input">
+                                    <option value="0">---Select Vendor---</option>
+                                    <option value="1">Mantis</option>
+                                    <option value="4">YourBus</option>
+                                    <option value="7">Arya Omni Talk</option>
+                                    <option value="11">Intangles</option>
+                                    <option value="12">Mantis-Arya Omni Talk</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row end -->
+                <div class="row row-no-gutters">
+                    <div class="col-sm-12">
+                        
+                        <div class="col-md-2 col-sm-3" id="selbus">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Bus</strong></span>
+                                <select id="selectVendor" name="selectBus" class="chosen-select form-control ig-input">
+                                    <option value="0">---All Bus---</option>
+                                    <option value="393">MH-26-N-9630</option>
+                                    <option value="1312">MH-26-N-1730</option>
+                                    <option value="1395">MH-26-N-1830</option>
+                                    <option value="1453">MH-26-AD-1530</option>
+                                    <option value="1454">MH-26-BE-1430</option>
+                                    <option value="1455">MH-26-BE-1930</option>
+                                    <option value="1606">GJ-26-T-6464</option>
+                                    <option value="1612">MH-26-N-1630</option>
+                                    <option value="1629">GJ-26-T-6969</option>
+                                    <option value="1636">MH-26-N-9130</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2  col-sm-3" id="enqWrap">
+                            <div class="form-group" style="margin-bottom:15px;margin-top:9px;">
+                                <input class="custome_radio" type="radio" id="DateRange" name="enquiry" value="0"
+                                    checked="checked">
+                                <label for="DateRange">Date Range</label>
+                                <input class="custome_radio" type="radio" id="Duration" name="enquiry" value="1">
+                                <label for="Duration">Duration</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2  col-sm-3 dtrange" id="frDt">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon ig-label"><strong>From Date</strong></span>
+                                <input class="form-control ig-input datepicker" type="text" id="fromDT" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-2  col-sm-3 dtrange" id="toDt">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon ig-label"><strong>To Date</strong></span>
+                                <input class="form-control ig-input datepicker" type="text" id="toDT" value="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4  col-sm-3" id="duration" style="display:none;">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                    <span class="input-group-addon ig-label"><strong>Duration</strong></span>
+                                    <select id="selectDur" name="selectDur" class="chosen-select form-control ig-input">
+                                        <option value="5">5 mins</option>
+                                        <option value="15">15 mins</option>
+                                        <option value="30">30 mins</option>
+                                        <option value="180">3 hrs</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4  col-sm-12 btn-wrap">
+                            <button id="GPSDataLoad" type="button" class="btn btn-orange">
+                                <strong>Load</strong>
+                            </button>
+                            <button id="exportDiv" type="button" class="btn btn-outline-orange ">
+                                <strong>Export</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- row end -->
+                <!-- progress bar -->
+                <div class="progress progress-striped active" id="divProgressBS" style="display: none;">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"
+                        aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        P r o c e s s i n g . . .P l e a se &nbsp; W a i t
+                    </div>
+                </div>
+                <!-- row end -->
+
+            </div>
+            <!-- gps-monitoring-search end -->
+            <!-- search-result-block start -->
+            <div class="gps-monitoring-result" style="margin:15px;">
+                <div id="BusGPSDetail" style="display: block;">
+                    <div class="row row-no-gutters" style="margin-bottom:10px;">
+                        <div class="col-sm-2" style="float:right;margin-right:35px;">
+                            <span class="input-search-icon"></span>
+                            <input type="text" id="myInputTextField" class="form-control" value="" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="row row-no-gutters">
+                        <table cellpadding="0" cellspacing="0" id="BusGPSTable">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">#</th>
+                                    <th rowspan="2">Bus ID</th>
+                                    <th rowspan="2">Bus Number</th>
+                                    <th rowspan="2">Operator</th>
+                                    <th rowspan="2">Vendor</th>
+                                    <th rowspan="2">VehicleID</th>
+                                    <th rowspan="2">Auth Code</th>
+                                    <th colspan="3">08-03-2022</th>
+                                </tr>
+                                <tr>
+                                    <th class="total">Total Response</th>
+                                    <th class="scs">Success</th>
+                                    <th class="fail">Fail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="bgwhite">1</td>
+                                    <td class="nowrap bgwhite" title="393">393</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9630">MH-26-N-9630</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="009999999922">009999999922</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">2</td>
+                                    <td class="nowrap bgwhite" title="1312">1312</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-1730">MH-26-N-1730</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685388">8669685388</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 8">8</td>
+                                    <td class="scs nowrap bggreen" title=" 8 - 100.00%">8 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">3</td>
+                                    <td class="nowrap bgwhite" title="1395">1395</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-1830">MH-26-N-1830</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685397">8669685397</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 6">6</td>
+                                    <td class="scs nowrap bggreen" title=" 6 - 100.00%">6 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">4</td>
+                                    <td class="nowrap bgwhite" title="1453">1453</td>
+                                    <td class="nowrap bgwhite" title="MH-26-AD-1530">MH-26-AD-1530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387029936">7387029936</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 6">6</td>
+                                    <td class="scs nowrap bggreen" title=" 6 - 100.00%">6 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">5</td>
+                                    <td class="nowrap bgwhite" title="1454">1454</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-1430">MH-26-BE-1430</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683285">8669683285</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">6</td>
+                                    <td class="nowrap bgwhite" title="1455">1455</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-1930">MH-26-BE-1930</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683287">8669683287</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">7</td>
+                                    <td class="nowrap bgwhite" title="1606">1606</td>
+                                    <td class="nowrap bgwhite" title="GJ-26-T-6464">GJ-26-T-6464</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="YourBus">YourBus</td>
+                                    <td class="nowrap bgwhite" title="GJ26T6464">GJ26T6464</td>
+                                    <td class="nowrap bgwhite" title="GJ26T6464">GJ26T6464</td>
+                                    <td class="total nowrap bgred" title=" 8">8</td>
+                                    <td class="scs nowrap bgred" title=" 0 - 0.00%">0 - 0.00%</td>
+                                    <td class="fail nowrap bgred" title=" 8 - 100.00%">8 - 100.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">8</td>
+                                    <td class="nowrap bgwhite" title="1612">1612</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-1630">MH-26-N-1630</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683286">8669683286</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 6">6</td>
+                                    <td class="scs nowrap bggreen" title=" 6 - 100.00%">6 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">9</td>
+                                    <td class="nowrap bgwhite" title="1629">1629</td>
+                                    <td class="nowrap bgwhite" title="GJ-26-T-6969">GJ-26-T-6969</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="YourBus">YourBus</td>
+                                    <td class="nowrap bgwhite" title="GJ26T6969">GJ26T6969</td>
+                                    <td class="nowrap bgwhite" title="d7e9f912f8a8a7cf">d7e9f912f8a8a7cf</td>
+                                    <td class="total nowrap bggreen" title=" 13">13</td>
+                                    <td class="scs nowrap bggreen" title=" 13 - 100.00%">13 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">10</td>
+                                    <td class="nowrap bgwhite" title="1636">1636</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9130">MH-26-N-9130</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387039180">7387039180</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">11</td>
+                                    <td class="nowrap bgwhite" title="1705">1705</td>
+                                    <td class="nowrap bgwhite" title="MH-29-V-2323">MH-29-V-2323</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="YourBus">YourBus</td>
+                                    <td class="nowrap bgwhite" title="MH29V2323">MH29V2323</td>
+                                    <td class="nowrap bgwhite" title="1fc3b3e481c78ad0">1fc3b3e481c78ad0</td>
+                                    <td class="total nowrap bgred" title=" 10">10</td>
+                                    <td class="scs nowrap bgred" title=" 0 - 0.00%">0 - 0.00%</td>
+                                    <td class="fail nowrap bgred" title=" 10 - 100.00%">10 - 100.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">12</td>
+                                    <td class="nowrap bgwhite" title="1706">1706</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6130">MH-26-N-6130</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="009999999910">009999999910</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">13</td>
+                                    <td class="nowrap bgwhite" title="1708">1708</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6230">MH-26-N-6230</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="8669685397">8669685397</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">14</td>
+                                    <td class="nowrap bgwhite" title="2227">2227</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6330">MH-26-N-6330</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="8669685406">8669685406</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">15</td>
+                                    <td class="nowrap bgwhite" title="2317">2317</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-1130">MH-26-BE-1130</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685391">8669685391</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 8">8</td>
+                                    <td class="scs nowrap bggreen" title=" 8 - 100.00%">8 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">16</td>
+                                    <td class="nowrap bgwhite" title="2318">2318</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-1230">MH-26-BE-1230</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683282">8669683282</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 14">14</td>
+                                    <td class="scs nowrap bggreen" title=" 14 - 100.00%">14 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">17</td>
+                                    <td class="nowrap bgwhite" title="2319">2319</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-1330">MH-26-BE-1330</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685406">8669685406</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 10">10</td>
+                                    <td class="scs nowrap bggreen" title=" 10 - 100.00%">10 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">18</td>
+                                    <td class="nowrap bgwhite" title="2483">2483</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-5930">MH-26-N-5930</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387025693">7387025693</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bgred" title=" 9">9</td>
+                                    <td class="scs nowrap bgred" title=" 0 - 0.00%">0 - 0.00%</td>
+                                    <td class="fail nowrap bgred" title=" 9 - 100.00%">9 - 100.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">19</td>
+                                    <td class="nowrap bgwhite" title="2494">2494</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-8830">MH-26-N-8830</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685398">8669685398</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 9">9</td>
+                                    <td class="scs nowrap bggreen" title=" 9 - 100.00%">9 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">20</td>
+                                    <td class="nowrap bgwhite" title="2495">2495</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-4530">MH-26-N-4530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683284">8669683284</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 10">10</td>
+                                    <td class="scs nowrap bggreen" title=" 10 - 100.00%">10 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">21</td>
+                                    <td class="nowrap bgwhite" title="2496">2496</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6630">MH-26-N-6630</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685390">8669685390</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 10">10</td>
+                                    <td class="scs nowrap bggreen" title=" 10 - 100.00%">10 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">22</td>
+                                    <td class="nowrap bgwhite" title="2497">2497</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-5530">MH-26-N-5530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387024378">7387024378</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 7">7</td>
+                                    <td class="scs nowrap bggreen" title=" 7 - 100.00%">7 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">23</td>
+                                    <td class="nowrap bgwhite" title="2498">2498</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9230">MH-26-N-9230</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7028378813">7028378813</td>
+                                    <td class="nowrap bgwhite" title="ST">ST</td>
+                                    <td class="total nowrap bgred" title=" 11">11</td>
+                                    <td class="scs nowrap bgred" title=" 0 - 0.00%">0 - 0.00%</td>
+                                    <td class="fail nowrap bgred" title=" 11 - 100.00%">11 - 100.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">24</td>
+                                    <td class="nowrap bgwhite" title="2499">2499</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6430">MH-26-N-6430</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387026529">7387026529</td>
+                                    <td class="nowrap bgwhite" title="SHARMATRAVEL">SHARMATRAVEL</td>
+                                    <td class="total nowrap bggreen" title=" 12">12</td>
+                                    <td class="scs nowrap bggreen" title=" 12 - 100.00%">12 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">25</td>
+                                    <td class="nowrap bgwhite" title="2500">2500</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6730">MH-26-N-6730</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="009999999918">009999999918</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">26</td>
+                                    <td class="nowrap bgwhite" title="2501">2501</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9730">MH-26-N-9730</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685407">8669685407</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">27</td>
+                                    <td class="nowrap bgwhite" title="2502">2502</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6030">MH-26-N-6030</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685388">8669685388</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 13">13</td>
+                                    <td class="scs nowrap bggreen" title=" 13 - 100.00%">13 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">28</td>
+                                    <td class="nowrap bgwhite" title="2503">2503</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-7530">MH-26-N-7530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685389">8669685389</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 10">10</td>
+                                    <td class="scs nowrap bggreen" title=" 10 - 100.00%">10 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">29</td>
+                                    <td class="nowrap bgwhite" title="2504">2504</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9330">MH-26-N-9330</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="009999999921">009999999921</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">30</td>
+                                    <td class="nowrap bgwhite" title="2505">2505</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-6530">MH-26-N-6530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685405">8669685405</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 7">7</td>
+                                    <td class="scs nowrap bggreen" title=" 7 - 100.00%">7 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">31</td>
+                                    <td class="nowrap bgwhite" title="2506">2506</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9830">MH-26-N-9830</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="009999999917">009999999917</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">32</td>
+                                    <td class="nowrap bgwhite" title="2507">2507</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9930">MH-26-N-9930</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685404">8669685404</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 8">8</td>
+                                    <td class="scs nowrap bggreen" title=" 8 - 100.00%">8 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">33</td>
+                                    <td class="nowrap bgwhite" title="2508">2508</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-9430">MH-26-N-9430</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="009999999924">009999999924</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">34</td>
+                                    <td class="nowrap bgwhite" title="2509">2509</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-2030">MH-26-BE-2030</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669685392">8669685392</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 9">9</td>
+                                    <td class="scs nowrap bggreen" title=" 9 - 100.00%">9 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">35</td>
+                                    <td class="nowrap bgwhite" title="2989">2989</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-1530">MH-26-N-1530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387029936">7387029936</td>
+                                    <td class="nowrap bgwhite" title="SHARMATRAVEL">SHARMATRAVEL</td>
+                                    <td class="total nowrap bggreen" title=" 10">10</td>
+                                    <td class="scs nowrap bggreen" title=" 10 - 100.00%">10 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">36</td>
+                                    <td class="nowrap bgwhite" title="3576">3576</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-8730">MH-26-N-8730</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis">Mantis</td>
+                                    <td class="nowrap bgwhite" title="8669683283">8669683283</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">37</td>
+                                    <td class="nowrap bgwhite" title="3687">3687</td>
+                                    <td class="nowrap bgwhite" title="GJ-26-T-8383">GJ-26-T-8383</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="YourBus">YourBus</td>
+                                    <td class="nowrap bgwhite" title="GJ26T8383">GJ26T8383</td>
+                                    <td class="nowrap bgwhite" title="d7e9f912f8a8a7cf">d7e9f912f8a8a7cf</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">38</td>
+                                    <td class="nowrap bgwhite" title="5438">5438</td>
+                                    <td class="nowrap bgwhite" title="MP-30-P-0530">MP-30-P-0530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7028378859">7028378859</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 6">6</td>
+                                    <td class="scs nowrap bggreen" title=" 6 - 100.00%">6 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">39</td>
+                                    <td class="nowrap bgwhite" title="5439">5439</td>
+                                    <td class="nowrap bgwhite" title="MP-30-P-0430">MP-30-P-0430</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7028379085">7028379085</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 12">12</td>
+                                    <td class="scs nowrap bggreen" title=" 12 - 100.00%">12 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">40</td>
+                                    <td class="nowrap bgwhite" title="6523">6523</td>
+                                    <td class="nowrap bgwhite" title="MH-31-CQ-5561">MH-31-CQ-5561</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="9096219492">9096219492</td>
+                                    <td class="nowrap bgwhite" title="sainitravel">sainitravel</td>
+                                    <td class="total nowrap bggreen" title=" 8">8</td>
+                                    <td class="scs nowrap bggreen" title=" 8 - 100.00%">8 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">41</td>
+                                    <td class="nowrap bgwhite" title="9943">9943</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-2530">MH-26-N-2530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683286">8669683286</td>
+                                    <td class="nowrap bgwhite" title="SHARMATRAVEL">SHARMATRAVEL</td>
+                                    <td class="total nowrap bggreen" title=" 14">14</td>
+                                    <td class="scs nowrap bggreen" title=" 14 - 100.00%">14 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">42</td>
+                                    <td class="nowrap bgwhite" title="9944">9944</td>
+                                    <td class="nowrap bgwhite" title="MH-26-N-3530">MH-26-N-3530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387033231">7387033231</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 6">6</td>
+                                    <td class="scs nowrap bggreen" title=" 6 - 100.00%">6 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">43</td>
+                                    <td class="nowrap bgwhite" title="11339">11339</td>
+                                    <td class="nowrap bgwhite" title="MJ-26-AD-1530">MJ-26-AD-1530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387029936">7387029936</td>
+                                    <td class="nowrap bgwhite" title="ST">ST</td>
+                                    <td class="total nowrap bgred" title=" 7">7</td>
+                                    <td class="scs nowrap bgred" title=" 0 - 0.00%">0 - 0.00%</td>
+                                    <td class="fail nowrap bgred" title=" 7 - 100.00%">7 - 100.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">44</td>
+                                    <td class="nowrap bgwhite" title="11500">11500</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-2930">MH-26-BE-2930</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387024378">7387024378</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 7">7</td>
+                                    <td class="scs nowrap bggreen" title=" 7 - 100.00%">7 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">45</td>
+                                    <td class="nowrap bgwhite" title="11501">11501</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-3030">MH-26-BE-3030</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683284">8669683284</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 12">12</td>
+                                    <td class="scs nowrap bggreen" title=" 12 - 100.00%">12 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">46</td>
+                                    <td class="nowrap bgwhite" title="11900">11900</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-3130">MH-26-BE-3130</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="8669683286">8669683286</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">47</td>
+                                    <td class="nowrap bgwhite" title="11901">11901</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-3230">MH-26-BE-3230</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Mantis-Arya Omni Talk">Mantis-Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7387033231">7387033231</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">48</td>
+                                    <td class="nowrap bgwhite" title="13453">13453</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-3430">MH-26-BE-3430</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7028378859">7028378859</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 11">11</td>
+                                    <td class="scs nowrap bggreen" title=" 11 - 100.00%">11 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">49</td>
+                                    <td class="nowrap bgwhite" title="13454">13454</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-3530">MH-26-BE-3530</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7028379085">7028379085</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 9">9</td>
+                                    <td class="scs nowrap bggreen" title=" 9 - 100.00%">9 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">50</td>
+                                    <td class="nowrap bgwhite" title="13697">13697</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-3930">MH-26-BE-3930</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="7028379128">7028379128</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 9">9</td>
+                                    <td class="scs nowrap bggreen" title=" 9 - 100.00%">9 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">51</td>
+                                    <td class="nowrap bgwhite" title="13707">13707</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-4030">MH-26-BE-4030</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Arya Omni Talk">Arya Omni Talk</td>
+                                    <td class="nowrap bgwhite" title="5756120019645">5756120019645</td>
+                                    <td class="nowrap bgwhite" title="sharmatravel">sharmatravel</td>
+                                    <td class="total nowrap bggreen" title=" 6">6</td>
+                                    <td class="scs nowrap bggreen" title=" 6 - 100.00%">6 - 100.00%</td>
+                                    <td class="fail nowrap bggreen" title=" 0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">52</td>
+                                    <td class="nowrap bgwhite" title="20489">20489</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-7130">MH-26-BE-7130</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Intangles">Intangles</td>
+                                    <td class="nowrap bgwhite" title="862818048009601">862818048009601</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">53</td>
+                                    <td class="nowrap bgwhite" title="20490">20490</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-7230">MH-26-BE-7230</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Intangles">Intangles</td>
+                                    <td class="nowrap bgwhite" title="862818048010500">862818048010500</td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">54</td>
+                                    <td class="nowrap bgwhite" title="21368">21368</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-7330">MH-26-BE-7330</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Intangles">Intangles</td>
+                                    <td class="nowrap bgwhite" title="862818047942364  ">862818047942364 </td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                                <tr>
+                                    <td class="bgwhite">55</td>
+                                    <td class="nowrap bgwhite" title="21369">21369</td>
+                                    <td class="nowrap bgwhite" title="MH-26-BE-7430">MH-26-BE-7430</td>
+                                    <td class="nowrap bgwhite" title="Sharma Travels (Nanded)">Sharma Travels (Nanded)
+                                    </td>
+                                    <td class="nowrap bgwhite" title="Intangles">Intangles</td>
+                                    <td class="nowrap bgwhite" title="862818047975430 ">862818047975430 </td>
+                                    <td class="nowrap bgwhite" title=""></td>
+                                    <td class="nowrap bgwhite total" title="0">0</td>
+                                    <td class="nowrap bgwhite scs" title="0 - 0.00%">0 - 0.00%</td>
+                                    <td class="nowrap bgwhite fail" title="0 - 0.00%">0 - 0.00%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- row end -->
+            </div>
+            <!-- search-result-block end -->
+
+
+        </div>
+    </div>
+
+    <script src="./js/jquery-2.2.4.min.js"></script>
+    <script src="./chosen/chosen.jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+        </script>
+
+    <script src="./js/common.js"></script>
+</body>
+
+</html>

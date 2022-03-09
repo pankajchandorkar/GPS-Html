@@ -16,7 +16,9 @@
   margin-top: 27px;
 }
 
-
+.margin-0 {
+  margin: 0;
+}
 
 .btm-shadow {
   box-shadow: 0px 1px 3px #ccc;
@@ -215,7 +217,357 @@
   border-color: #ff6000;
 }
 
-
 .form-group {
   margin-bottom: 5px;
+}
+
+.gps-monitoring-search .input-group .ig-label {
+  min-width: 80px;
+}
+
+.gps-monitoring-search .datepicker {
+  cursor: pointer;
+}
+
+#selbus .chosen-container-single .chosen-drop {
+  width: 200px;
+}
+
+#dtrange input {
+  font-weight: 700;
+  letter-spacing: 0.03rem;
+  font-size: 12px;
+}
+
+.input-search-icon {
+  position: relative;
+}
+
+.input-search-icon::before {
+  position: absolute;
+  content: "";
+  background: url(../chosen/search.svg) no-repeat 9px 10px;
+  background-size: 15px 15px;
+  width: 25px;
+  height: 34px;
+}
+
+#myInputTextField {
+  padding-left: 27px;
+}
+
+#myInputTextField::placeholder {
+  color: #666666;
+  font-size: 12px;
+  letter-spacing: 0.1rem;
+}
+
+#BusGPSDetail table {
+  font-size: 12px;
+  color: Black;
+  width: 100% !important;
+}
+
+#BusGPSDetail table thead,
+#BusGPSDetail table th {
+  /*background-color: #1C69B7;*/
+  color: #fff;
+  border-left: 1px solid #ddd;
+  text-align: center;
+}
+
+#BusGPSDetail table > tbody > tr > td,
+#BusGPSDetail table > thead > tr > th {
+  /*border: 1px solid black !important;*/
+  padding: 5px !important;
+}
+
+#BusGPSDetail table > tbody > tr > td,
+#BusGPSDetail table > thead > tr > th {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /*max-width:100px;*/
+}
+
+#BusGPSTable {
+  display: block;
+  height: calc(100vh - 145px);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+#BusGPSTable thead {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#BusGPSTable thead th {
+  height: 32px;
+  border: 1px solid black;
+  background-color: #005575 !important;
+  padding: 6px 2px 6px 2px;
+}
+
+#BusGPSTable thead td {
+  height: 32px;
+  font-weight: bold;
+  border: 1px solid black;
+  padding: 6px 2px 6px 2px;
+  background-color: #005575 !important;
+}
+
+#BusGPSTable thead tr:nth-child(1) th:nth-child(1) {
+  position: relative;
+  display: table-cell;
+  background-color: #005575 !important;
+  font-weight: bold;
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+#BusGPSTable thead tr:nth-child(1) th:nth-child(2) {
+  position: relative;
+  display: table-cell;
+  background-color: #005575 !important;
+  font-weight: bold;
+  min-width: 80px !important;
+  max-width: 80px !important;
+}
+
+#BusGPSTable thead tr:nth-child(1) th:nth-child(3) {
+  position: relative;
+  display: table-cell;
+  background-color: #005575 !important;
+  font-weight: bold;
+  min-width: 130px !important;
+  max-width: 130px !important;
+}
+
+#BusGPSTable thead tr:nth-child(1) th:nth-child(4) {
+  position: relative;
+  display: table-cell;
+  background-color: #005575 !important;
+  font-weight: bold;
+  min-width: 250px !important;
+  max-width: 250px !important;
+}
+
+#BusGPSTable thead tr:nth-child(1) th:nth-child(5) {
+  position: relative;
+  display: table-cell;
+  background-color: #005575 !important;
+  font-weight: bold;
+  min-width: 154px !important;
+  max-width: 154px !important;
+}
+
+#BusGPSTable thead tr:nth-child(1) th:nth-child(6) {
+  position: relative;
+  display: table-cell;
+  background-color: #005575 !important;
+  font-weight: bold;
+  min-width: 154px !important;
+  max-width: 154px !important;
+}
+
+#BusGPSTable thead tr:nth-child(1) th:nth-child(7) {
+  position: relative;
+  display: table-cell;
+  background-color: #005575 !important;
+  font-weight: bold;
+  min-width: 154px !important;
+  max-width: 154px !important;
+}
+
+/*tbody*/
+#BusGPSTable tbody {
+  position: relative;
+  display: block;
+  width: 99%;
+  height: calc(100vh - 223px);
+  /* height: 150px; */
+  overflow: auto;
+  text-align: center;
+}
+
+#BusGPSTable tbody td {
+  height: 32px;
+  border: 1px solid black;
+  padding: 6px 2px 6px 2px;
+}
+
+#BusGPSTable tbody tr td:nth-child(1) {
+  position: relative;
+  display: table-cell;
+  background-color: #e1e6e8 !important;
+  font-weight: bold;
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+#BusGPSTable tbody tr td:nth-child(2) {
+  position: relative;
+  display: table-cell;
+  background-color: #e1e6e8 !important;
+  font-weight: bold;
+  min-width: 80px !important;
+  max-width: 80px !important;
+}
+
+#BusGPSTable tbody tr td:nth-child(3) {
+  position: relative;
+  display: table-cell;
+  background-color: #e1e6e8 !important;
+  font-weight: bold;
+  min-width: 130px !important;
+  max-width: 130px !important;
+}
+
+#BusGPSTable tbody tr td:nth-child(4) {
+  position: relative;
+  display: table-cell;
+  background-color: #e1e6e8 !important;
+  font-weight: bold;
+  min-width: 250px !important;
+  max-width: 250px !important;
+}
+
+#BusGPSTable tbody tr td:nth-child(5) {
+  position: relative;
+  display: table-cell;
+  background-color: #e1e6e8 !important;
+  font-weight: bold;
+  min-width: 154px !important;
+  max-width: 154px !important;
+}
+
+#BusGPSTable tbody tr td:nth-child(6) {
+  position: relative;
+  display: table-cell;
+  background-color: #e1e6e8 !important;
+  font-weight: bold;
+  min-width: 154px !important;
+  max-width: 154px !important;
+}
+
+#BusGPSTable tbody tr td:nth-child(7) {
+  position: relative;
+  display: table-cell;
+  background-color: #e1e6e8 !important;
+  font-weight: bold;
+  min-width: 154px !important;
+  max-width: 154px !important;
+}
+
+.total {
+  min-width: 102px !important;
+  max-width: 102px !important;
+}
+
+.scs {
+  min-width: 102px !important;
+  max-width: 102px !important;
+}
+
+.fail {
+  min-width: 102px !important;
+  max-width: 102px !important;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.bgwhite {
+  background-color: White;
+}
+
+.bgyellow {
+  background-color: #ffff8e;
+}
+
+.bggreen {
+  background-color: greenyellow;
+}
+
+.bgred {
+  background-color: #f99292;
+}
+
+/* width */
+#BusGPSTable tbody::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+#BusGPSTable tbody::-webkit-scrollbar-track {
+  background: #d8e6f1;
+}
+
+/* Handle */
+#BusGPSTable tbody::-webkit-scrollbar-thumb {
+  background: #98a1a8;
+}
+
+/* Handle on hover */
+#BusGPSTable tbody::-webkit-scrollbar-thumb:hover {
+  background: #005575;
+}
+
+#operatorDiv {
+  padding: 0 15px;
+}
+
+#enqWrap {
+  padding: 0 15px;
+}
+
+#duration {
+  padding: 0 15px;
+}
+
+#frDt {
+  padding: 0 7px 0 15px;
+}
+
+#toDt {
+  padding: 0 15px 0 7px;
+}
+
+@media (max-width: 768px) {
+  
+
+  #operatorDiv {
+    padding: 0;
+  }
+
+  #enqWrap {
+    padding: 0;
+  }
+
+  #duration {
+    padding: 0;
+  }
+
+  #frDt {
+    padding: 0px;
+    margin-bottom: 15px;
+  }
+
+  #toDt {
+    padding: 0px;
+    margin-bottom: 15px;
+  }
+
+  #page-wrapper .btn-wrap {
+    margin-bottom: 15px;
+  }
+
+  #selbus .chosen-container-single .chosen-drop {
+    width: 100%;
+  }
 }

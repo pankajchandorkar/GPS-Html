@@ -587,6 +587,94 @@
   margin-right: 15px;
 }
 
+/* datatable css */
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+  background: none;
+}
+
+#tripsInfo table thead {
+  background: #005575;
+  color: white;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after {
+  display: none;
+}
+
+table.dataTable th {
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+table.dataTable td {
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+table.dataTable thead tr {
+  line-height: 16px;
+}
+
+table.dataTable tbody tr {
+  line-height: 26px;
+}
+
+table.dataTable.display tbody tr.odd > .sorting_1 {
+  background-color: #ffffff;
+}
+
+table.dataTable.display tbody tr.even > .sorting_1 {
+  background-color: #ffffff;
+}
+
+table.dataTable tbody td {
+  background-color: #ffffff;
+}
+
+table.dataTable.display tbody tr:hover > .sorting_1,
+table.dataTable.display tbody tr.odd:hover > .sorting_1,
+table.dataTable.display tbody tr.even:hover > .sorting_1 {
+  background-color: #ffffff;
+}
+
+table.dataTable.no-footer {
+  border-bottom: none;
+}
+
+div.dataTables_length label {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+div.dataTables_length select {
+  margin-right: 5px;
+}
+
+#dtTripsInfo_length select {
+  width: 80px;
+  padding: 10px;
+  height: 37px;
+}
+
+#dtTripsInfo_filter input {
+  height: 37px;
+  width: 220px;
+}
+
+#dtTripsInfo_info {
+  font-weight: 600;
+  color: #545454 !important;
+  font-size: 13px;
+  margin-left: 15px;
+}
+
 @media (max-width: 768px) {
   #operatorDiv {
     padding: 0;

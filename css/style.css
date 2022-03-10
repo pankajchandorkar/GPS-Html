@@ -221,6 +221,10 @@
   margin-bottom: 5px;
 }
 
+.gps-monitoring-search {
+  box-shadow: 0px 1px 3px #ccc;
+}
+
 .gps-monitoring-search .input-group .ig-label {
   min-width: 80px;
 }
@@ -518,6 +522,10 @@
   background: #005575;
 }
 
+#custom-padding {
+  padding: 0 15px;
+}
+
 #operatorDiv {
   padding: 0 15px;
 }
@@ -567,6 +575,7 @@
 
 #TripFilters {
   margin-bottom: 15px;
+  color: #777777;
 }
 
 #TripFilters .form-check-label {
@@ -575,10 +584,10 @@
 
 .tripwise-gps-search {
   box-shadow: 0px 1px 3px #ccc;
-  color: #777777;
 }
 
-.tripwise-gps-search .input-group .ig-label {
+.tripwise-gps-search .input-group .ig-label,
+.assign-dropoff-search .input-group .ig-label {
   min-width: 80px;
 }
 
@@ -668,14 +677,74 @@ div.dataTables_length select {
   width: 220px;
 }
 
-#dtTripsInfo_info {
+.dataTables_info {
   font-weight: 600;
   color: #545454 !important;
   font-size: 13px;
   margin-left: 15px;
 }
 
+.assign-dropoff-search #TripInfo div > div {
+  padding-left: 0px;
+}
+
+.assign-dropoff-search {
+  box-shadow: 0px 1px 3px #ccc;
+}
+
+.fr-date {
+  width: 20%;
+}
+
+.to-date {
+  width: 20%;
+}
+
+.show-trips {
+  width: 9.3%;
+}
+
+.sel-trip {
+  width: 41.4%;
+}
+
+.fr-date #FromDate {
+  padding-left: 30px;
+}
+
+.to-date .cal-icon {
+  left: 89px;
+}
+
+.to-date #ToDate {
+  padding-left: 30px;
+}
+
+#triplist_chosen {
+  width: 442px !important;
+}
+
+#dtDropoffInfo .btn {
+  width: 105px;
+  padding: 3px 5px;
+}
+
+#dtDropoffInfo_wrapper select {
+  width: 80px;
+  padding: 10px;
+  height: 37px;
+}
+
+#dtDropoffInfo_filter input {
+  height: 37px;
+  width: 220px;
+}
+
 @media (max-width: 768px) {
+  #custom-padding {
+    padding: 0;
+  }
+
   #operatorDiv {
     padding: 0;
   }
@@ -702,7 +771,72 @@ div.dataTables_length select {
     margin-bottom: 15px;
   }
 
-  #selbus .chosen-container-single .chosen-drop {
+  .fr-date {
     width: 100%;
+  }
+
+  .to-date {
+    width: 100%;
+  }
+
+  .show-trips {
+    width: 100%;
+  }
+
+  .sel-trip {
+    width: 100%;
+  }
+
+  #triplist_chosen {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .fr-date {
+    width: 40%;
+  }
+
+  .to-date {
+    width: 40%;
+  }
+
+  .show-trips {
+    width: 20%;
+  }
+
+  .sel-trip {
+    width: 80%;
+  }
+
+  #triplist_chosen {
+    width: 100% !important;
+  }
+}
+@media (min-width: 992px) {
+  #triplist_chosen {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .fr-date {
+    width: 20%;
+  }
+
+  .to-date {
+    width: 20%;
+  }
+
+  .show-trips {
+    width: 9.3%;
+  }
+
+  .sel-trip {
+    width: 41.4%;
+  }
+
+  #triplist_chosen {
+    width: 442px !important;
   }
 }

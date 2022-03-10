@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assign DropOff's Lat/Lng (POI).</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./css/font-awesome.css" />
+    <link rel="stylesheet" href="./chosen/chosen.min.css" />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="./css/jquery.datatables.css">
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <header id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
+                <a class="navbar-brand">
+                    <img src="./images/mantis-logo.jpg" />
+                </a>
+            </div>
+            <!-- /.navbar-header -->
+            <!--<div class="navbar-header" style="color: #fff;padding-top: 10px;font-size: 16px;margin-left: 50px;width: 50%;">
+            <marquee>CRS Server will be under maintenance from 1 AM to 5 AM</marquee>
+        </div>-->
+            <ul class="nav navbar-top-links navbar-right">
+                <li></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-info-sign"></i> Handy Info
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" id="shortCutsInfo"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Shortcut
+                                Keys
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-link"></i> Quick Links
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/master" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Master
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/AgentBooking" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Agent
+                                Booking</a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/Report/PhoneBookingsView" id="phoneBookingsConfirmReport"
+                                style="display: none" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Confirm/Cancel Bookings</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#"
+                        id="HeaderReports">
+                        <i class="glyphicon glyphicon-list-alt"></i> Reports
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li id="BkgUserWCollectionRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#"
+                                onclick="ProcessUserWCollectionReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Userwise
+                                Collection Report
+                            </a>
+                        </li>
+                        <li id="BkgRetrievePNRRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" onclick="ProcessRetrievePNRReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Retrieve
+                                PNR Report
+                            </a>
+                        </li>
+                        <li id="futureOccReport">
+                            <a href="http://buscrs.com/Report/FutureForeCastView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Future
+                                Occupancy Report
+                            </a>
+                        </li>
+                        <li id="groupBoardingReport">
+                            <a href="http://buscrs.com/Report/GroupBoardingView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Group
+                                Boarding Report
+                            </a>
+                        </li>
+                        <li id="ticketHistoryReport">
+                            <a href="http://buscrs.com/Report/TicketHistoryView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Ticket
+                                History
+                            </a>
+                        </li>
+                        <li id="holdTicketHistoryReport">
+                            <a href="http://buscrs.com/Report/HoldBookingsView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Hold
+                                Release
+                            </a>
+                        </li>
+                        <li style="display: none" id="quickViewDashBoard">
+                            <a href="http://buscrs.com/Dashboard/QuickView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                        <li style="display: none" id="ReturnTKTBookingReport">
+                            <a href="http://buscrs.com/Report/ReturnTKTView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-user"></i> User
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user bkg-ul-wide">
+                        <li>
+                            <span class="bkg-li-head"> Branch </span>
+                            <span id="spnBranchName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> User </span>
+                            <span id="spnUserName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> options </span>
+                            <span id="changePassword" class="bkg-li-val" style="cursor: pointer">
+                                Change Password
+                            </span>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="http://buscrs.com/Login/Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="page-wrapper" style="margin-top:34px;padding:0px;min-height:200px;">
+        <div class="main" style="padding:0;">
+            <div class="assign-dropoff-search" style="background: #ffffff;padding:1px 10px;">
+                <div class="row  row-no-gutters">
+                    <div class="col-md-12">
+                        <h4><strong>Assign DropOff's Lat/Lng (POI).</strong></h4>
+                    </div>
+                </div>
+                <!-- row end -->
+                <div class="row" id="TripInfo" style="margin-right:-10px;">
+                    <div class="col-sm-12">
+                        <div class="col-sm-2 fr-date">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Date From</strong></span>
+                                <span class="cal-icon"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 18"
+                                        style="enable-background:new 0 0 16 18;" xml:space="preserve">
+                                        <path
+                                            d="M12.4,9.9H8v4.5h4.4V9.9z M11.6,0v1.8H4.4V0H2.7v1.8H1.8C0.8,1.8,0,2.6,0,3.6l0,12.6c0,1,0.8,1.8,1.8,1.8h12.4
+                                   c1,0,1.8-0.8,1.8-1.8V3.6c0-1-0.8-1.8-1.8-1.8h-0.9V0H11.6z M14.2,16.2H1.8V6.3h12.4V16.2z" />
+                                    </svg></span>
+                                <input class="form-control ig-input datepicker" type="text" id="FromDate" value="">
+                            </div>
+                        </div>
+                        <div class="col-sm-2 to-date">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Date To</strong></span>
+                                <span class="cal-icon"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 18"
+                                        style="enable-background:new 0 0 16 18;" xml:space="preserve">
+                                        <path
+                                            d="M12.4,9.9H8v4.5h4.4V9.9z M11.6,0v1.8H4.4V0H2.7v1.8H1.8C0.8,1.8,0,2.6,0,3.6l0,12.6c0,1,0.8,1.8,1.8,1.8h12.4
+                                   c1,0,1.8-0.8,1.8-1.8V3.6c0-1-0.8-1.8-1.8-1.8h-0.9V0H11.6z M14.2,16.2H1.8V6.3h12.4V16.2z" />
+                                    </svg></span>
+                                <input class="form-control ig-input datepicker" type="text" id="ToDate" value="">
+                            </div>
+                        </div>
+                        <div class="col-sm-2 btn-wrap show-trips">
+                            <button type="button" class="btn btn-orange" id="btnTripInfo">
+                                <strong>Show Trips</strong>
+                            </button>
+                        </div>
+                        <div class="col-sm-4 sel-trip">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Select Trip</strong></span>
+                                <select id="triplist" name="triplist"
+                                    class="chosen-select form-control ig-input trip-list">
+                                    <option value="0">-- Select --</option>
+                                    <option value="8361">8361-567Ahmedabad - Mumbai new rout 2018 - 2X1(49) AC-NAC
+                                        Seater-Sleeper - 8:00 PM</option>
+                                    <option value="90546">90546-Pankaj Mumbai - Ahmedabad - 2X1(37) AC -Sleeper - 10:00
+                                        AM
+                                    </option>
+                                    <option value="72610">72610-Rahul Bangalore - mumbai - 2X1(36) AC Seater-Sleeper -
+                                        10:00
+                                        PM</option>
+                                    <option value="102682">102682-Bangalore - Ahmedabad - AC Sleeper Scania - 10:00 PM
+                                    </option>
+                                    <option value="39835">39835-(sachin) Kolhapur - Mumbai - 2X1(36) Multiaxle Volvo AC
+                                        Sleeer - 8:00 PM</option>
+                                    <option value="28897">28897-~1234$Ahmedabad-Bangalore - Deepak - 10:30 PM</option>
+                                    <option value="34837">34837-Gorakhpur - Ahmedabad - 2X1(20) NAC Seater-Sleeper -
+                                        10:00
+                                        PM</option>
+                                    <option value="39574">39574-Ahmedabad - Gorakhpur - 2X1(36) AC Seater-Sleeper - 5:00
+                                        AM
+                                    </option>
+                                    <option value="55386">55386-Jaipur - Ujjain - 2X1(38) AC -Sleeper - 7:00 PM</option>
+                                    <option value="76018">76018-Barhalganj - Azamgarh - Jyoti-Luxury AC Seater - 6:00 PM
+                                    </option>
+                                    <option value="80377">80377-Bangalore - Kochi - 2X1(36) AC -Sleeper SPL - 8:30 PM
+                                    </option>
+                                    <option value="82939">82939-Delhi-Varanasi-2X1(36) Multiaxle Volvo AC Sleeer - 6:00
+                                        PM
+                                    </option>
+                                    <option value="106496">106496-Belgaum - Goa - Prakash 2X1(40) AC Seater-Sleeper -
+                                        6:30
+                                        PM</option>
+                                    <option value="116905">116905-Nathdwara - Pune - 2X1(40) NAC Seater-Sleeper 456 -
+                                        9:30
+                                        PM</option>
+                                    <option value="118477">118477-Etawah - Agra - 1X1(10) AC Seater - 10:49 PM</option>
+                                    <option value="118442">118442-Agra - Etawah - 1X1(10) AC Seater - 11:06 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 btn-wrap show-trips">
+                            <button type="button" class="btn btn-orange" id="btnGetDropoff">
+                                <strong>Show DropOff</strong>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- row end -->
+
+                <!-- progress bar -->
+                <div class="progress progress-striped active" id="divProgressBS" style="display: none;">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"
+                        aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        P r o c e s s i n g . . .P l e a se &nbsp; W a i t
+                    </div>
+                </div>
+                <!-- row end -->
+
+            </div>
+            <!-- assign-dropoff-search end -->
+            <!-- search-result-block start -->
+            <div class="assign-dropoff-result" id="tripsInfo" style="margin:15px;min-height: 400px;">
+                <div class="row row-no-gutters">
+
+                    <table id="dtDropoffInfo" class="display table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Sr.</th>
+                                <th>City Name</th>
+                                <th>DropOff Name</th>
+                                <th>Maven Latitude</th>
+                                <th>Maven Longitude</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Anand</td>
+                                <td>Express Highway, </td>
+                                <td></td>
+                                <td></td>
+                                <td>27.856657370</td>
+                                <td>76.263761351</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Baroda</td>
+                                <td>Kapurai chowkdi, </td>
+                                <td></td>
+                                <td></td>
+                                <td>22.247223496</td>
+                                <td>73.160168762</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mumbai</td>
+                                <td>Sion, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.045348972</td>
+                                <td>72.863156728</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Mumbai</td>
+                                <td>Goregaon (East), </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Mumbai</td>
+                                <td>Mumbai Central, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.067937957</td>
+                                <td>72.874500883</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Mumbai</td>
+                                <td>Dombivli, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.641332254</td>
+                                <td>72.349580994</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Mumbai</td>
+                                <td>Malad(e)- pushpa park, </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Mumbai</td>
+                                <td>Kashi mira (connecting bus from ahmedabad waiting period 6 hrs),
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.648488954</td>
+                                <td>72.354044189</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Mumbai</td>
+                                <td>Chembur, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.603266561</td>
+                                <td>72.435068359</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Mumbai</td>
+                                <td>Borivali (West), </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.234419824</td>
+                                <td>72.840270884</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Anand</td>
+                                <td>Express Highway, </td>
+                                <td></td>
+                                <td></td>
+                                <td>27.856657370</td>
+                                <td>76.263761351</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Baroda</td>
+                                <td>Kapurai chowkdi, </td>
+                                <td></td>
+                                <td></td>
+                                <td>22.247223496</td>
+                                <td>73.160168762</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mumbai</td>
+                                <td>Sion, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.045348972</td>
+                                <td>72.863156728</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Mumbai</td>
+                                <td>Goregaon (East), </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Mumbai</td>
+                                <td>Mumbai Central, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.067937957</td>
+                                <td>72.874500883</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Mumbai</td>
+                                <td>Dombivli, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.641332254</td>
+                                <td>72.349580994</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Mumbai</td>
+                                <td>Malad(e)- pushpa park, </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Mumbai</td>
+                                <td>Kashi mira (connecting bus from ahmedabad waiting period 6 hrs),
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.648488954</td>
+                                <td>72.354044189</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Mumbai</td>
+                                <td>Chembur, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.603266561</td>
+                                <td>72.435068359</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Mumbai</td>
+                                <td>Borivali (West), </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.234419824</td>
+                                <td>72.840270884</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Anand</td>
+                                <td>Express Highway, </td>
+                                <td></td>
+                                <td></td>
+                                <td>27.856657370</td>
+                                <td>76.263761351</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Baroda</td>
+                                <td>Kapurai chowkdi, </td>
+                                <td></td>
+                                <td></td>
+                                <td>22.247223496</td>
+                                <td>73.160168762</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mumbai</td>
+                                <td>Sion, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.045348972</td>
+                                <td>72.863156728</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Mumbai</td>
+                                <td>Goregaon (East), </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Mumbai</td>
+                                <td>Mumbai Central, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.067937957</td>
+                                <td>72.874500883</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Mumbai</td>
+                                <td>Dombivli, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.641332254</td>
+                                <td>72.349580994</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Mumbai</td>
+                                <td>Malad(e)- pushpa park, </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Mumbai</td>
+                                <td>Kashi mira (connecting bus from ahmedabad waiting period 6 hrs),
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.648488954</td>
+                                <td>72.354044189</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Mumbai</td>
+                                <td>Chembur, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.603266561</td>
+                                <td>72.435068359</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Mumbai</td>
+                                <td>Borivali (West), </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.234419824</td>
+                                <td>72.840270884</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Anand</td>
+                                <td>Express Highway, </td>
+                                <td></td>
+                                <td></td>
+                                <td>27.856657370</td>
+                                <td>76.263761351</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Baroda</td>
+                                <td>Kapurai chowkdi, </td>
+                                <td></td>
+                                <td></td>
+                                <td>22.247223496</td>
+                                <td>73.160168762</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mumbai</td>
+                                <td>Sion, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.045348972</td>
+                                <td>72.863156728</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Mumbai</td>
+                                <td>Goregaon (East), </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Mumbai</td>
+                                <td>Mumbai Central, </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.067937957</td>
+                                <td>72.874500883</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Mumbai</td>
+                                <td>Dombivli, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.641332254</td>
+                                <td>72.349580994</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Mumbai</td>
+                                <td>Malad(e)- pushpa park, </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Add
+                                        POI</button></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Mumbai</td>
+                                <td>Kashi mira (connecting bus from ahmedabad waiting period 6 hrs),
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.648488954</td>
+                                <td>72.354044189</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Mumbai</td>
+                                <td>Chembur, </td>
+                                <td></td>
+                                <td></td>
+                                <td>18.603266561</td>
+                                <td>72.435068359</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Mumbai</td>
+                                <td>Borivali (West), </td>
+                                <td></td>
+                                <td></td>
+                                <td>19.234419824</td>
+                                <td>72.840270884</td>
+                                <td><button type="button" class="btn btn-orange btn-sm viewonmap">Change
+                                        Lat/Lng</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- search-result-block end -->
+        </div>
+    </div>
+
+    <script src="./js/jquery-2.2.4.min.js"></script>
+    <script src="./chosen/chosen.jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+        </script>
+
+    <script src="./js/jquery.dataTables.js"></script>
+    <script src="./js/dataTables.bootstrap.js"></script>
+    <script src="./js/jquery.dataTables.columnFilter.js"></script>
+    <script src="./js/jquery.dataTables.editable.js"></script>
+
+    <script src="./js/common.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dtDropoffInfo').DataTable({
+                "scrollCollapse": false,
+                "bDestroy": true,
+                "bPaginate": true,
+                "scrollX": true,
+                "scrollY": "410px",
+                "ordering": false,
+                "columnDefs": [
+                    { "width": "40px", "targets": 0 },
+                    { "width": "170px", "targets": 1 },
+                    { "width": "170px", "targets": 2 },
+                    { "width": "170px", "targets": 3 },
+                    { "width": "170px", "targets": 4 },
+                    { "width": "170px", "targets": 5 },
+                    { "width": "170px", "targets": 6 },
+                    { "width": "170px", "targets": 7 },
+                ]
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -63,12 +63,25 @@ $(document).ready(function () {
     $('#GPSDataLoad').click(function () {
         $('#BusGPSDetail').hide();
         $('#divProgressBS').show();
-        setTimeout(myGreeting, 1000)
+        setTimeout(GPSDataLoad, 1000)
+    });
+
+    //on show report button click
+    $('#btnStoppageReport').click(function () {
+        $("#dtReportInfo").hide();
+        $('#divProgressBS').show();
+        setTimeout(StoppageReport, 1000);
     });
 
 });
 
-function myGreeting() {
+function StoppageReport() {
+    $('#dtReportInfo').show();
+    $('#divProgressBS').hide();
+}
+
+
+function GPSDataLoad() {
     $('#BusGPSDetail').show();
     $('#divProgressBS').hide();
 }

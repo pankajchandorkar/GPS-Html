@@ -587,7 +587,8 @@
 }
 
 .tripwise-gps-search .input-group .ig-label,
-.assign-dropoff-search .input-group .ig-label {
+.assign-dropoff-search .input-group .ig-label,
+.stoppage-report-search .input-group .ig-label {
   min-width: 80px;
 }
 
@@ -692,35 +693,38 @@ div.dataTables_length select {
   box-shadow: 0px 1px 3px #ccc;
 }
 
-.fr-date {
+.assign-dropoff-search .fr-date {
   width: 20%;
 }
 
-.to-date {
+.assign-dropoff-search .to-date {
   width: 20%;
 }
 
-.show-trips {
+.assign-dropoff-search .show-trips {
   width: 9.3%;
 }
 
-.sel-trip {
+.assign-dropoff-search .sel-trip {
   width: 41.4%;
 }
 
-.fr-date #FromDate {
+.assign-dropoff-search .fr-date #FromDate,
+.stoppage-report-search .fr-date #FromDate {
   padding-left: 30px;
 }
 
-.to-date .cal-icon {
+.assign-dropoff-search .to-date .cal-icon,
+.stoppage-report-search .to-date .cal-icon {
   left: 89px;
 }
 
-.to-date #ToDate {
+.assign-dropoff-search .to-date #ToDate,
+.stoppage-report-search .to-date #ToDate {
   padding-left: 30px;
 }
 
-#triplist_chosen {
+.assign-dropoff-search #triplist_chosen {
   width: 442px !important;
 }
 
@@ -740,6 +744,16 @@ div.dataTables_length select {
   width: 220px;
 }
 
+.stoppage-report-search #TripInfo div > div {
+  padding-left: 0px;
+}
+
+.stoppage-report-search {
+  box-shadow: 0px 1px 3px #ccc;
+}
+
+
+/* for mobile */
 @media (max-width: 768px) {
   #custom-padding {
     padding: 0;
@@ -771,72 +785,162 @@ div.dataTables_length select {
     margin-bottom: 15px;
   }
 
-  .fr-date {
+  .assign-dropoff-search .fr-date {
     width: 100%;
   }
 
-  .to-date {
+  .assign-dropoff-search .to-date {
     width: 100%;
   }
 
-  .show-trips {
+  .assign-dropoff-search .show-trips {
     width: 100%;
   }
 
-  .sel-trip {
+  .assign-dropoff-search .sel-trip {
     width: 100%;
   }
 
-  #triplist_chosen {
+  .assign-dropoff-search #triplist_chosen {
     width: 100% !important;
+  }
+
+  h4 {
+    color: red;
+  }
+
+  .stoppage-report-search .fr-date {
+    width: 42%;
+  }
+
+  .stoppage-report-search .to-date {
+    width: 42%;
+  }
+
+  .stoppage-report-search .show-stoppage {
+    width: 16%;
+  }
+
+  .stoppage-report-search .sel-trip {
+    width: 100%;
   }
 }
 
+/* for tablet */
 @media (min-width: 768px) {
-  .fr-date {
+  .assign-dropoff-search .fr-date {
     width: 40%;
   }
 
-  .to-date {
+  .assign-dropoff-search .to-date {
     width: 40%;
   }
 
-  .show-trips {
+  .assign-dropoff-search .show-trips {
     width: 20%;
   }
 
-  .sel-trip {
+  .assign-dropoff-search .sel-trip {
     width: 80%;
   }
 
-  #triplist_chosen {
+  .assign-dropoff-search #triplist_chosen {
     width: 100% !important;
   }
+
+  h4 {
+    color: green;
+  }
+
+  .stoppage-report-search .fr-date {
+    width: 44%;
+  }
+
+  .stoppage-report-search .to-date {
+    width: 44%;
+  }
+
+  .stoppage-report-search .show-stoppage {
+    width: 12%;
+  }
+
+  .stoppage-report-search .sel-trip {
+    width: 76%;
+  }
 }
+
+/* for laptop */
 @media (min-width: 992px) {
-  #triplist_chosen {
+  .assign-dropoff-search #triplist_chosen {
     width: 100% !important;
+  }
+
+  h4 {
+    color: yellow;
+  }
+
+  .stoppage-report-search .fr-date {
+    width: 19%;
+  }
+
+  .stoppage-report-search .to-date {
+    width: 19%;
+  }
+  .stoppage-report-search .show-stoppage {
+    width: 10%;
+  }
+
+  .stoppage-report-search .sel-trip {
+    width: 32%;
+  }
+
+  .stoppage-report-search #triplist_chosen {
+    width: 261px !important;
   }
 }
 
+/* for desktop */
 @media (min-width: 1200px) {
-  .fr-date {
+  .assign-dropoff-search .fr-date {
     width: 20%;
   }
 
-  .to-date {
+  .assign-dropoff-search .to-date {
     width: 20%;
   }
 
-  .show-trips {
+  .assign-dropoff-search .show-trips {
     width: 9.3%;
   }
 
-  .sel-trip {
+  .assign-dropoff-search .sel-trip {
     width: 41.4%;
   }
 
-  #triplist_chosen {
+  .assign-dropoff-search #triplist_chosen {
     width: 442px !important;
+  }
+
+  h4 {
+    color: blue;
+  }
+
+  .stoppage-report-search .fr-date {
+    width: 19%;
+  }
+
+  .stoppage-report-search .to-date {
+    width: 19%;
+  }
+  .stoppage-report-search .show-stoppage {
+    width: 9%;
+  }
+
+  .stoppage-report-search .sel-trip {
+    width: 35%;
+  }
+
+  .stoppage-report-search #triplist_chosen {
+    width: 355px !important;
   }
 }

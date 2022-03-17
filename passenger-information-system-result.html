@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passenger Information System</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./css/font-awesome.css" />
+    <link rel="stylesheet" href="./chosen/chosen.min.css" />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+        #DemoDetail table {
+            font-size: 11px;
+            color: Black
+        }
+
+        #DemoDetail table thead,
+        #DemoDetail table th {
+            background-color: #005575;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        #DemoDetail table th {
+            vertical-align: middle !important;
+        }
+
+        #TrDetail table>tbody>tr:nth-child(even) {
+            background-color: #eeeeee9c;
+        }
+
+        #DemoTable {
+            width: 100% !important;
+        }
+
+        #DemoTable thead tr {
+            height: 37px;
+        }
+
+        #DemoTable thead tr th:first-child {
+            text-align: center;
+        }
+
+        #DemoTable tbody tr {
+            height: 40px;
+        }
+
+        #DemoTable tbody tr:nth-child(even) {
+            background: #ffffff;
+        }
+
+        #DemoTable tbody tr:nth-child(odd) {
+            background: #F2F6F9;
+        }
+
+        #DemoTable tbody tr td:first-child {
+            text-align: center;
+        }
+
+
+        th {
+            font-size: 12px;
+        }
+
+        td {
+            font-size: 12px;
+            color: #444;
+            vertical-align: middle !important;
+            font-weight: 600;
+        }
+
+        .delayExtreme {
+            display: block;
+            background-color: #FE0000;
+            padding: 5px;
+            color: white;
+            font-weight: 900;
+            width: 103px;
+        }
+
+        .delayOnTime {
+            display: block;
+            background-color: #20BE35;
+            padding: 5px;
+            color: white;
+            font-weight: 900;
+            width: 103px;
+        }
+
+        .borderRight {
+            border-right: 3px solid #fff !important;
+        }
+
+        th.rel,
+        th.rel1,
+        th.rel2,
+        th.rel3,
+        th.rel4 {
+            background-color: #1C69B7 !important;
+        }
+
+        .rel {
+            position: sticky;
+            left: 0px;
+            background-color: White !important;
+        }
+
+        .rel1 {
+            position: sticky;
+            left: 24px;
+            background-color: White !important;
+        }
+
+        .rel2 {
+            position: sticky;
+            left: 144px;
+            background-color: White !important;
+        }
+
+        .rel3 {
+            position: sticky;
+            left: 254px;
+            background-color: White !important;
+        }
+
+        .rel4 {
+            position: sticky;
+            left: 364px;
+            background-color: White !important;
+        }
+
+        .toggle-switch {
+            cursor: pointer;
+            display: inline-block;
+            height: 1.5em;
+            width: 4em;
+            background: palevioletred;
+            border: 0.25em solid palevioletred;
+            border-radius: 999em;
+            position: relative;
+            transition: 0.1s ease-out all;
+        }
+
+        .toggle-switch[type="checkbox"] {
+            position: absolute;
+            visibility: hidden;
+        }
+
+        .toggle-switch::before {
+            content: "";
+            opacity: 0.75;
+            color: white;
+            position: absolute;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+            top: 0;
+            bottom: 0;
+            right: 0.5em;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-switch::after {
+            content: "";
+            background: white;
+            position: absolute;
+            border-radius: 999em;
+            height: 1em;
+            width: 1em;
+            transition: 0.25s ease-out all;
+            left: 0;
+        }
+
+        .toggle-switch:checked+label {
+            background: springgreen;
+            border-color: springgreen;
+        }
+
+        .toggle-switch:checked+label::before {
+            left: 0.5em;
+        }
+
+        .toggle-switch:checked+label::after {
+            left: 2.5em;
+        }
+
+        .toggle-switch.style1 {
+            background: grey;
+            border-color: grey;
+        }
+
+        .toggle-switch.style1::before {
+            content: "First";
+        }
+
+        .toggle-switch.style1:checked+label {
+            background: grey;
+            border-color: grey;
+        }
+
+        .toggle-switch.style1:checked+label::before {
+            content: "Last";
+        }
+
+        .dtNoWrap {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="page-wrapper" style="margin-top:34px;padding:0px;min-height:200px;">
+        <div class="main" style="padding:0 15px;">
+            <div class="row  row-no-gutters" id="report-heading">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <h4><strong>Passenger Information System</strong></h4>
+                        <h5 id="pickupname">Nandini travels, ambarnath, Ambarnath</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>&nbsp;</h4>
+                        <h5 class="text-right">Displaying in English</h5>
+                    </div>
+                </div>
+            </div>
+            <!-- row end -->
+
+            <div class="passenger-info-system-result" style="min-height: 400px;">
+                <div class="row row-no-gutters" id="DemoDetail">
+                    <table cellpadding="0" cellspacing="0" id="DemoTable">
+                        <thead>
+                            <tr role="row">
+                                <th style="width: 30px;">#</th>
+                                <th style="width: 60px;">TripID</th>
+                                <th style="width: 100px;">Route</th>
+                                <th style="width: 100px;">Bus Number</th>
+                                <th style="width: 100px;">Schedule Time</th>
+                                <th style="width: 100px;">Delay Time</th>
+                                <th style="width: 100px;">ETA</th>
+                                <th style="width: 100px;">ETD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>123456</td>
+                                <td>Jamnanagar - Delhi</td>
+                                <td>RJ-20-PA-1847</td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td><span class="delayExtreme">10 Mins</span></td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td>15 Feb 2022, 21:30</td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>123456</td>
+                                <td>Jodpur - Pune</td>
+                                <td>RJ-20-PA-1847</td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td><span class="delayOnTime">0 Mins</span></td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td>15 Feb 2022, 21:30</td>
+                            </tr>
+                            <tr>
+                                <td>03</td>
+                                <td>123456</td>
+                                <td>Jamnanagar - Delhi</td>
+                                <td>RJ-20-PA-1847</td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td><span class="delayExtreme">10 Mins</span></td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td>15 Feb 2022, 21:30</td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>123456</td>
+                                <td>Jodpur - Pune</td>
+                                <td>RJ-20-PA-1847</td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td><span class="delayOnTime">0 Mins</span></td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td>15 Feb 2022, 21:30</td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>123456</td>
+                                <td>Jamnanagar - Delhi</td>
+                                <td>RJ-20-PA-1847</td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td><span class="delayOnTime">0 Mins</span></td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td>15 Feb 2022, 21:30</td>
+                            </tr>
+                            <tr>
+                                <td>06</td>
+                                <td>123456</td>
+                                <td>Jodpur - Pune</td>
+                                <td>RJ-20-PA-1847</td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td><span class="delayExtreme">10 Mins</span></td>
+                                <td>15 Feb 2022, 21:30</td>
+                                <td>15 Feb 2022, 21:30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-2.2.4.min.js"></script>
+    <script src="./chosen/chosen.jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+        </script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>

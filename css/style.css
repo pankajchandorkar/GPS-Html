@@ -588,7 +588,9 @@
 
 .tripwise-gps-search .input-group .ig-label,
 .assign-dropoff-search .input-group .ig-label,
-.stoppage-report-search .input-group .ig-label {
+.stoppage-report-search .input-group .ig-label,
+.on-time-report-search .input-group .ig-label,
+.pickup-dropoff-analysis-report-search .input-group .ig-label {
   min-width: 80px;
 }
 
@@ -710,17 +712,23 @@ div.dataTables_length select {
 }
 
 .assign-dropoff-search .fr-date #FromDate,
-.stoppage-report-search .fr-date #FromDate {
+.stoppage-report-search .fr-date #FromDate,
+.on-time-report-search .fr-date #fromDt,
+.pickup-dropoff-analysis-report-search .fr-date #FromDate {
   padding-left: 30px;
 }
 
 .assign-dropoff-search .to-date .cal-icon,
-.stoppage-report-search .to-date .cal-icon {
+.stoppage-report-search .to-date .cal-icon,
+.on-time-report-search .to-date .cal-icon,
+.pickup-dropoff-analysis-report-search .to-date .cal-icon {
   left: 89px;
 }
 
 .assign-dropoff-search .to-date #ToDate,
-.stoppage-report-search .to-date #ToDate {
+.stoppage-report-search .to-date #ToDate,
+.on-time-report-search .to-date #toDt,
+.pickup-dropoff-analysis-report-search .to-date #ToDate {
   padding-left: 30px;
 }
 
@@ -744,17 +752,66 @@ div.dataTables_length select {
   width: 220px;
 }
 
-.stoppage-report-search #TripInfo div > div {
+.stoppage-report-search #TripInfo div > div,
+.passenger-info-search .row div > div,
+.on-time-report-search .row div > div {
   padding-left: 0px;
+}
+
+.pickup-dropoff-analysis-report-search .row div > div {
+  padding-left: 0px;
+  padding-right: 7px;
+}
+.pickup-dropoff-analysis-report-search .input-group {
+  padding-right: 0px !important;
 }
 
 .stoppage-report-search {
   box-shadow: 0px 1px 3px #ccc;
 }
 
+.passenger-info-search {
+  box-shadow: 0px 1px 3px #ccc;
+}
+
+.passenger-info-search .input-group .ig-label {
+  min-width: 1%;
+}
+
+.passenger-info-search #StartPIS {
+  width: 110px;
+}
+
+#report-heading h4 {
+  margin: 0;
+}
+
+#report-heading h5 {
+  margin: 3px 0 10px 0;
+  font-size: 13px;
+}
+
+.on-time-report-search .btn-orange {
+  min-width: 125px;
+}
+
+.pickup-dropoff-analysis-report-search .chosen-container-single .chosen-single {
+  padding: 6px 0px 0px 10px;
+}
+
+.pickup-dropoff-analysis-report-search .btn-orange {
+  min-width: 65px;
+}
+
+
+
 
 /* for mobile */
 @media (max-width: 768px) {
+  /* h4 {
+    color: red;
+  } */
+
   #custom-padding {
     padding: 0;
   }
@@ -781,6 +838,10 @@ div.dataTables_length select {
     margin-bottom: 15px;
   }
 
+  .on-time-report-search #toDt {
+    margin-bottom: 0px;
+  }
+
   #page-wrapper .btn-wrap {
     margin-bottom: 15px;
   }
@@ -805,10 +866,6 @@ div.dataTables_length select {
     width: 100% !important;
   }
 
-  h4 {
-    color: red;
-  }
-
   .stoppage-report-search .fr-date {
     width: 42%;
   }
@@ -824,10 +881,55 @@ div.dataTables_length select {
   .stoppage-report-search .sel-trip {
     width: 100%;
   }
+
+  .pickup-dropoff-analysis-report-search .fr-date {
+    width: 42%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .to-date {
+    width: 42%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDALoadTrips {
+    width: 16%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip .chosen-container-single {
+    width: 100% !important;
+  }
+
+  .pickup-dropoff-analysis-report-search
+    .selPDATrip
+    .chosen-container-single
+    span {
+    white-space: normal !important;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip {
+    width: 100%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDAType {
+    width: 84%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDAReport {
+    width: 16%;
+    float: left;
+  }
 }
 
 /* for tablet */
 @media (min-width: 768px) {
+  /* h4 {
+    color: green;
+  } */
+
   .assign-dropoff-search .fr-date {
     width: 40%;
   }
@@ -848,10 +950,6 @@ div.dataTables_length select {
     width: 100% !important;
   }
 
-  h4 {
-    color: green;
-  }
-
   .stoppage-report-search .fr-date {
     width: 44%;
   }
@@ -867,16 +965,57 @@ div.dataTables_length select {
   .stoppage-report-search .sel-trip {
     width: 76%;
   }
+
+  .pickup-dropoff-analysis-report-search .fr-date {
+    width: 42%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .to-date {
+    width: 42%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDALoadTrips {
+    width: 16%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip .chosen-container-single {
+    width: 100% !important;
+  }
+
+  .pickup-dropoff-analysis-report-search
+    .selPDATrip
+    .chosen-container-single
+    span {
+    white-space: normal !important;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip {
+    width: 100%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDAType {
+    width: 84%;
+    float: left;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDAReport {
+    width: 16%;
+    float: left;
+  }
 }
 
 /* for laptop */
 @media (min-width: 992px) {
+  /* h4 {
+    color: yellow;
+  } */
+
   .assign-dropoff-search #triplist_chosen {
     width: 100% !important;
-  }
-
-  h4 {
-    color: yellow;
   }
 
   .stoppage-report-search .fr-date {
@@ -897,10 +1036,46 @@ div.dataTables_length select {
   .stoppage-report-search #triplist_chosen {
     width: 261px !important;
   }
+
+  /* .pickup-dropoff-analysis-report-search .selPDATrip .chosen-container-single {
+    width: 421px !important;
+  } */
+
+  /* .pickup-dropoff-analysis-report-search .selPDATrip .form-group {
+    min-width: 328px;
+  } */
+
+  .pickup-dropoff-analysis-report-search .fr-date {
+    width: 45%;
+  }
+
+  .pickup-dropoff-analysis-report-search .to-date {
+    width: 45%;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDALoadTrips {
+    width: 10%;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip {
+    width: 45%;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDAType {
+    width: 45%;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDAReport {
+    width: 10%;
+  }
 }
 
 /* for desktop */
 @media (min-width: 1200px) {
+  /* h4 {
+    color: blue;
+  } */
+
   .assign-dropoff-search .fr-date {
     width: 20%;
   }
@@ -921,10 +1096,6 @@ div.dataTables_length select {
     width: 442px !important;
   }
 
-  h4 {
-    color: blue;
-  }
-
   .stoppage-report-search .fr-date {
     width: 19%;
   }
@@ -942,5 +1113,37 @@ div.dataTables_length select {
 
   .stoppage-report-search #triplist_chosen {
     width: 355px !important;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip .chosen-container-single {
+    width: inherit !important;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip .form-group {
+    width: 320px;
+  }
+
+  .pickup-dropoff-analysis-report-search .fr-date {
+    width: 16%;
+  }
+
+  .pickup-dropoff-analysis-report-search .to-date {
+    width: 15.3%;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDALoadTrips {
+    width: 8.3%;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDATrip {
+    width: 31.7%;
+  }
+
+  .pickup-dropoff-analysis-report-search .selPDAType {
+    width: 22.7%;
+  }
+
+  .pickup-dropoff-analysis-report-search .btnPDAReport {
+    width: 6%;
   }
 }

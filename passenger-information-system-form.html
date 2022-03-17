@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passenger Information System</title>
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="./css/font-awesome.css" />
+    <link rel="stylesheet" href="./chosen/chosen.min.css" />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+
+</head>
+
+<body>
+    <header id="wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
+                <a class="navbar-brand">
+                    <img src="./images/Maven-logo.jpg" />
+                </a>
+            </div>
+            <!-- /.navbar-header -->
+            <!--<div class="navbar-header" style="color: #fff;padding-top: 10px;font-size: 16px;margin-left: 50px;width: 50%;">
+            <marquee>CRS Server will be under maintenance from 1 AM to 5 AM</marquee>
+        </div>-->
+            <ul class="nav navbar-top-links navbar-right">
+                <li></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-info-sign"></i> Handy Info
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" id="shortCutsInfo"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Shortcut
+                                Keys
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-link"></i> Quick Links
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <a href="http://buscrs.com/master" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Master
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/AgentBooking" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Agent
+                                Booking</a>
+                        </li>
+                        <li>
+                            <a href="http://buscrs.com/Report/PhoneBookingsView" id="phoneBookingsConfirmReport"
+                                style="display: none" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i>Confirm/Cancel Bookings</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#"
+                        id="HeaderReports">
+                        <i class="glyphicon glyphicon-list-alt"></i> Reports
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li id="BkgUserWCollectionRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#"
+                                onclick="ProcessUserWCollectionReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Userwise
+                                Collection Report
+                            </a>
+                        </li>
+                        <li id="BkgRetrievePNRRpt">
+                            <a href="http://buscrs.com/MasterBus/AssignGPS#" onclick="ProcessRetrievePNRReport();"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Retrieve
+                                PNR Report
+                            </a>
+                        </li>
+                        <li id="futureOccReport">
+                            <a href="http://buscrs.com/Report/FutureForeCastView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Future
+                                Occupancy Report
+                            </a>
+                        </li>
+                        <li id="groupBoardingReport">
+                            <a href="http://buscrs.com/Report/GroupBoardingView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Group
+                                Boarding Report
+                            </a>
+                        </li>
+                        <li id="ticketHistoryReport">
+                            <a href="http://buscrs.com/Report/TicketHistoryView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Ticket
+                                History
+                            </a>
+                        </li>
+                        <li id="holdTicketHistoryReport">
+                            <a href="http://buscrs.com/Report/HoldBookingsView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Hold
+                                Release
+                            </a>
+                        </li>
+                        <li style="display: none" id="quickViewDashBoard">
+                            <a href="http://buscrs.com/Dashboard/QuickView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                        <li style="display: none" id="ReturnTKTBookingReport">
+                            <a href="http://buscrs.com/Report/ReturnTKTView" target="_blank"><i
+                                    class="glyphicon glyphicon-chevron-right"></i> Quick View
+                                Dashboard
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="http://buscrs.com/MasterBus/AssignGPS#">
+                        <i class="glyphicon glyphicon-user"></i> User
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user bkg-ul-wide">
+                        <li>
+                            <span class="bkg-li-head"> Branch </span>
+                            <span id="spnBranchName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> User </span>
+                            <span id="spnUserName" class="bkg-li-val"> &nbsp; </span>
+                        </li>
+                        <li>
+                            <span class="bkg-li-head"> options </span>
+                            <span id="changePassword" class="bkg-li-val" style="cursor: pointer">
+                                Change Password
+                            </span>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="http://buscrs.com/Login/Logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="page-wrapper" style="margin-top:34px;padding:0px;min-height:200px;">
+        <div class="main" style="padding:0;">
+            <div class="passenger-info-search" style="background: #ffffff;padding:1px 10px;">
+                <div class="row  row-no-gutters">
+                    <div class="col-md-12">
+                        <h4><strong>Passenger Information System</strong></h4>
+                    </div>
+                </div>
+                <!-- row end -->
+                <div class="row" style="margin-right:-10px;">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4 col-md-3 col-lg-3">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>City</strong></span>
+                                <select id="selectCity" name="selectCity" class="chosen-select form-control ig-input">
+                                    <option value="0">--Select City--</option>
+                                    <option value="2433">Adivare</option>
+                                    <option value="22">Ahmednagar</option>
+                                    <option value="1751">Ambarnath</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-5 col-lg-5">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>Pickup</strong></span>
+                                <select id="selectPickup" name="selectPickup"
+                                    class="chosen-select form-control ig-input">
+                                    <option value="0">--Select Pickup--</option>
+                                    <option value="41537">Hotel manikanandan,pethnaka 9370967574</option>
+                                    <option value="24570">Pick up peth naka (pickup van not available from ashta)
+                                        9370967574</option>
+                                    <option value="19924">Raj travels,ashta( nac pickup bus crossing pethnaka )
+                                        9370967574</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-2 col-lg-3">
+                            <div class="form-group input-group btm-shadow " style="margin-bottom:15px;">
+                                <span class="input-group-addon ig-label"><strong>No Of Rows</strong></span>
+                                <select id="selectRows" name="selectRows" class="chosen-select form-control ig-input">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-md-2 col-lg-1 btn-wrap">
+                            <button id="StartPIS" type="button" class="btn btn-orange">
+                                Start
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- row end -->
+
+                <!-- progress bar -->
+                <div class="progress progress-striped active" id="divProgressBS" style="display: none;">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100"
+                        aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        P r o c e s s i n g . . .P l e a se &nbsp; W a i t
+                    </div>
+                </div>
+                <!-- row end -->
+
+            </div>
+            <!-- assign-dropoff-search end -->
+            <!-- search-result-block start -->
+            <div class="assign-dropoff-result" id="tripsInfo" style="margin:15px;min-height: 400px;">
+                <div class="row row-no-gutters">
+
+                    <!-- Search Result Will Be Here... -->
+
+                </div>
+            </div>
+            <!-- search-result-block end -->
+        </div>
+    </div>
+
+    <script src="./js/jquery-2.2.4.min.js"></script>
+    <script src="./chosen/chosen.jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js">
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js">
+        </script>
+    <script src="./js/common.js"></script>
+</body>
+
+</html>

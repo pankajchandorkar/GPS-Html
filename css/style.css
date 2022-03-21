@@ -38,6 +38,7 @@
 .heading1 {
   border-bottom: 1px solid #cdcdcd;
   padding-bottom: 7px;
+  margin-bottom: 15px;
 }
 
 .input-group .ig-label {
@@ -191,6 +192,7 @@
   border-color: #ff6000;
   padding: 7px;
   min-width: 80px;
+  box-shadow: 0px 2px 4px #ccc;
 }
 
 .btn-orange:active,
@@ -206,7 +208,7 @@
   background-image: none;
   border-color: #ff6000;
   padding: 7px;
-  min-width: 80px;
+  min-width: 80px;box-shadow: 0px 2px 4px #ccc;
 }
 
 .btn-outline-orange:active,
@@ -565,12 +567,12 @@
 }
 
 #btnTripInfo {
-  padding: 7px 16px;
+  padding: 8px 16px;
   margin-right: 7px;
 }
 
 #btnExportExcel {
-  padding: 7px 15px;
+  padding: 8px 15px;
 }
 
 #TripFilters {
@@ -580,6 +582,13 @@
 
 #TripFilters .form-check-label {
   margin-right: 2px;
+  display: inline-flex;
+  justify-content: normal;
+  align-items: center;
+}
+
+#TripFilters .form-check-input {
+  margin: 0px 3px 0px 0px;
 }
 
 .tripwise-gps-search {
@@ -675,9 +684,25 @@ div.dataTables_length select {
   height: 37px;
 }
 
+#dtTripsInfo_filter label {
+  position: relative;
+}
+
+#dtTripsInfo_filter label::before {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: url(../chosen/search.svg) no-repeat 98%;
+  background-size: 15px 15px;
+  left: 60px;
+  top: 11px;
+}
+
 #dtTripsInfo_filter input {
   height: 37px;
   width: 220px;
+  padding-left: 30px;
 }
 
 .dataTables_info {
@@ -747,9 +772,25 @@ div.dataTables_length select {
   height: 37px;
 }
 
+#dtDropoffInfo_filter label {
+  position: relative;
+}
+
+#dtDropoffInfo_filter label::before {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  background: url(../chosen/search.svg) no-repeat 98%;
+  background-size: 15px 15px;
+  left: 60px;
+  top: 11px;
+}
+
 #dtDropoffInfo_filter input {
   height: 37px;
   width: 220px;
+  padding-left: 30px;
 }
 
 .stoppage-report-search #TripInfo div > div,
@@ -802,9 +843,6 @@ div.dataTables_length select {
 .pickup-dropoff-analysis-report-search .btn-orange {
   min-width: 65px;
 }
-
-
-
 
 /* for mobile */
 @media (max-width: 768px) {
